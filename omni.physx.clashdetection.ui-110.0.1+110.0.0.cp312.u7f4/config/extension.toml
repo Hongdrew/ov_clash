@@ -1,0 +1,104 @@
+[package]
+version = "110.0.1"
+
+# Lists people or organizations that are considered the "authors" of the package.
+authors = ["NVIDIA"]
+
+# The title and description fields are primarily for displaying extension info in UI
+title = "Clash Detection UX"
+description = "Clash Detection user experience."
+
+# Path (relative to the root) or content of readme markdown file for UI.
+readme = "docs/README.md"
+
+# URL of the extension source repository.
+repository = ""
+
+# One of categories for UI.
+category = "Clash Detection"
+
+# Keywords for the extension
+keywords = ["clash", "detection", "physics", "PhysX"]
+
+# Location of change log file in target (final) folder of extension, relative to the root. Can also be just a content
+# of it instead of file path. More info on writing changelog: https://keepachangelog.com/en/1.0.0/
+changelog = "docs/CHANGELOG.md"
+
+# Preview image and icon. Folder named "data" automatically goes in git lfs (see .gitattributes file).
+# Preview image is shown in "Overview" of Extensions window. Screenshot of an extension might be a good preview image.
+preview_image = "data/preview.png"
+
+# Icon is shown in Extensions window, it is recommended to be square, of size 256x256.
+icon = "data/icon.png"
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[dependencies]
+"omni.usd.schema.physx.clashdetection" = { version = "110.0.1", exact = true }
+"omni.usd" = {}
+"omni.ui" = {}
+"omni.physx.clashdetection" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.core" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.viewport" = { version = "110.0.1", exact = true, optional = true }
+"omni.physx.clashdetection.bake" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.telemetry" = { version = "110.0.1", exact = true }
+"omni.client" = {}
+"omni.kit.notification_manager" = {}
+"omni.kit.widget.stage" = {}
+"omni.kit.viewport.utility" = {}
+"omni.kit.window.file_importer" = {}
+"omni.kit.widget.prompt" = {}
+"omni.kit.widget.filebrowser" = {}
+"omni.kit.widget.settings" = {}
+"omni.kit.widget.searchfield" = {}
+"omni.kit.widget.highlight_label" = {}
+"omni.kit.clipboard" = {}
+"omni.kit.actions.core" = {}
+"omni.kit.hotkeys.core" = {}
+"omni.kit.property.usd" = {}
+"omni.kit.viewport.menubar.core" = { optional = true }
+
+[settings]
+exts."omni.kit.property.usd".allow_rename_prims = false
+# test remote URL setting: can be overriden from command line or a kit file
+ext."omni.physx.clashdetection.ui".testRemoteUrl = ""
+
+# Main python module this extension provides, it will be publicly available as "import omni.example.hello".
+[[python.module]]
+name = "omni.physxclashdetectionui"
+
+# Extension test settings
+[[test]]
+dependencies = [
+    "omni.physx.tests",
+    "omni.kit.ui_test",
+    "omni.physx.tests.visual",
+    "omni.hydra.rtx",
+    "omni.physx.clashdetection.anim",
+    "omni.physx.clashdetection.testdata-110.0.1",
+    "omni.anim.curve.core",
+]
+"filter:platform"."linux-aarch64".enabled = false
+args = [
+    "--/rtx-transient/post/aa/limitedOps=false",
+    "--/renderer/enabled=rtx",
+    "--/renderer/active=rtx",
+    "--/rtx/materialDb/syncLoads=true",
+    "--/rtx/hydra/materialSyncLoads=true",
+    "--/renderer/multiGpu/autoEnable=false",
+    "--/renderer/multiGpu/enabled=false",
+    "--/renderer/debug/validation/enabled=false",
+    "--/omni.kit.plugin/syncUsdLoads=true",
+    "--/app/asyncRendering=false",
+    "--no-window",
+    "--/app/font/file='${fonts}/OpenSans-SemiBold.ttf'",
+    "--/app/font/size=16",
+    "--/exts/omni.kit.telemetry/skipDeferredStartup=true",
+]
+stdoutFailPatterns.include = []
+stdoutFailPatterns.exclude = []
+pythonTests.exclude = []
+timeout = 900 # 15 minutes

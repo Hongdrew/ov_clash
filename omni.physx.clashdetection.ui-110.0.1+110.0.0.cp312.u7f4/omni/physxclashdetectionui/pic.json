@@ -1,0 +1,8 @@
+{
+	"pic":
+	[
+		{"username": "jbond", "first_name": "James", "last_name": "Bond", "email": "james.bond@007.com"},
+		{"username": "dvader", "first_name": "Darth", "last_name": "Vader", "email": "dvader@starwars.com"},
+		{"username": "pparker", "first_name": "Peter", "last_name": "Parker", "email": "peter@spider-man.com"}
+	]
+}

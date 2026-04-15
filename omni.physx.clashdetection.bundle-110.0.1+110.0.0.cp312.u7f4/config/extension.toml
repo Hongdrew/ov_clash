@@ -1,0 +1,41 @@
+[package]
+version = "110.0.1"
+category = "Simulation"
+authors = ["NVIDIA"]
+title = "Clash Detection Bundle"
+description="Omniverse Clash Detection bundle extension."
+repository = ""
+keywords = ["physx", "clash", "detection", "clash detection", "intersection"]
+changelog="docs/CHANGELOG.md"
+preview_image = "data/preview.png"
+icon = "data/icon.png"
+readme = "docs/README.md"
+support_level = "Example"
+
+[package.writeTarget]
+kit = true
+python = true
+usd = true
+
+[dependencies]
+"omni.physx.clashdetection" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.core" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.bake" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.viewport" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.ui" = { version = "110.0.1", exact = true }
+"omni.physx.clashdetection.anim" = { version = "110.0.1", exact = true }
+"omni.usd.schema.physx.clashdetection.viewport" = { version = "110.0.1", exact = true }
+
+# Main python module this extension provides, it will be publicly available as "import omni.example.hello".
+[[python.module]]
+name = "omni.physxclashdetectionbundle"
+
+[[test]]
+args = [
+    "--no-window",
+    "--/exts/omni.kit.telemetry/skipDeferredStartup=true",
+]
+dependencies = []
+"filter:platform"."linux-aarch64".enabled = false
+pyCoverageThreshold = 0
+waiver = "This is a bundle extension, it is not expected to have any coverage."

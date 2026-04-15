@@ -1,0 +1,21 @@
+
+[package]
+    archivePath = "https://d4i3qtqj3r0z5.cloudfront.net/omni.physx.clashdetection.viewport-110.0.1%2B110.0.0.cp312.u7f4.zip"
+
+    [package.target]
+
+        [package.target.python]
+            0 = "cp312"
+
+        [package.target.usd]
+            0 = "u7f41+stock+25.11+cxx11"
+
+        [package.target.kit]
+            0 = "110.0.0"
+
+    [package.publish]
+        kitVersion = "110.0.0+feature.267313.24ccb1c3.gl"
+        date = 1770646390
+        buildNumber = "110.0.1+release.58713.55618f0f.gl"
+        repoName = "omni.physx.clashdetection"
+        signed = 1

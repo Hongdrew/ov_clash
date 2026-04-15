@@ -1,0 +1,27 @@
+mdl 1.7;
+import ::df::*;
+
+export material emissive_two_sided(
+  uniform color parIntensityTintFront = color(0.050980393, 0.46666667, 0.7058824),
+  uniform float parIntensityFront     = 1600.0,
+  uniform color parIntensityTintBack  = color(0.050980393, 0.46666667, 0.7058824),
+  uniform float parIntensityBack      = 400.0
+)
+= 
+material(
+  thin_walled: true,
+  surface: material_surface(
+    emission: material_emission(
+      emission: df::diffuse_edf(),
+      intensity: parIntensityTintFront * parIntensityFront,
+      mode:      intensity_power
+    )
+  ),
+  backface: material_surface(
+    emission: material_emission(
+      emission: df::diffuse_edf(),
+      intensity: parIntensityTintBack * parIntensityBack,
+      mode:      intensity_power 
+    )
+  )
+);

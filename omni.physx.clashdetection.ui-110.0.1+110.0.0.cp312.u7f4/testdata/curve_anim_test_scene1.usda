@@ -1,0 +1,940 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (505.9826723327389, 131.08169250258177, 432.65677455811647)
+                double3 target = (22.03091442542359, 102.06691353229273, 207.94294207298805)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary navmeshSettings = {
+            double agentHeight = 180
+            double agentRadius = 20
+            bool excludeRigidBodies = 1
+            int ver = 2
+            double voxelCeiling = 460
+        }
+        dictionary omni_layer = {
+            dictionary locked = {
+            }
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:index:backgroundColor" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMax" = (0, 0, 0)
+            float3 "rtx:index:regionOfInterestMin" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_position" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_ground_reflectivity" = (0, 0, 0)
+            float3 "rtx:iray:environment_dome_rotation_axis" = (3.4028235e38, 3.4028235e38, 3.4028235e38)
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            double "rtx:post:lensFlares:flareScale" = 0.075
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:lensFlares:spectralBlurWavelengthRange" = (380, 550, 770)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            float3 "rtx:raytracing:indexdirect:svoBrickSize" = (32, 32, 32)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0, 0, 0)
+            double "rtx:wireframe:wireframeThickness" = 0.5
+            bool "rtx:wireframe:wireframeThicknessWorldSpace" = 0
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 100
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    subLayers = [
+    ]
+    timeCodesPerSecond = 60
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Xform "fix"
+    {
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def Mesh "Cube" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+            rel material:binding = </World/Looks/PreviewSurface_02> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (1, 2.393700154835636, 1)
+            double3 xformOp:translate = (0, 146.2034264015246, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+
+        def Mesh "Cube_01" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+            rel material:binding = </World/Looks/PreviewSurface> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (1, 1.7400914679528838, 1)
+            double3 xformOp:translate = (0, 117.14760255752766, 132.17237273183287)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+
+        def Mesh "Cube_02" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+            rel material:binding = </World/Looks/PreviewSurface_01> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (1, 1.038488765711742, 1)
+            double3 xformOp:translate = (0, 82.00904016686174, 264.95160411546397)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def Scope "Looks"
+    {
+        def Material "PreviewSurface"
+        {
+            token outputs:displacement.connect = </World/Looks/PreviewSurface/Shader.outputs:displacement>
+            token outputs:surface.connect = </World/Looks/PreviewSurface/Shader.outputs:surface>
+
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:clearcoatRoughness = 0.01 (
+                    customData = {
+                        float default = 0.01
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                color3f inputs:diffuseColor = (0.5206611, 1, 0) (
+                    customData = {
+                        float3 default = (0.18, 0.18, 0.18)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                float inputs:displacement = 0 (
+                    customData = {
+                        float default = 0
+                    }
+                    hidden = false
+                )
+                color3f inputs:emissiveColor = (0, 0, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                float inputs:ior = 1.5 (
+                    customData = {
+                        float default = 1.5
+                        dictionary range = {
+                            float max = 3.4028235e38
+                            float min = 0
+                        }
+                        dictionary soft_range = {
+                            float max = 5
+                            float min = 1
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:metallic = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                normal3f inputs:normal = (0, 0, 1) (
+                    customData = {
+                        float3 default = (0, 0, 1)
+                        dictionary range = {
+                            float3 max = (1, 1, 1)
+                            float3 min = (-1, -1, -1)
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:occlusion = 1 (
+                    customData = {
+                        float default = 1
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    doc = """This parameter is unused.
+"""
+                    hidden = false
+                )
+                float inputs:opacity = 1 (
+                    customData = {
+                        float default = 1
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:opacityThreshold = 0 (
+                    connectability = "interfaceOnly"
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:roughness = 0.5 (
+                    customData = {
+                        float default = 0.5
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                color3f inputs:specularColor = (0, 0, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                int inputs:useSpecularWorkflow = 0 (
+                    connectability = "interfaceOnly"
+                    customData = {
+                        int default = 0
+                        dictionary range = {
+                            int max = 1
+                            int min = 0
+                        }
+                        string widgetType = "checkBox"
+                    }
+                    hidden = false
+                )
+                token outputs:displacement (
+                    renderType = "material"
+                )
+                token outputs:surface (
+                    renderType = "material"
+                )
+            }
+        }
+
+        def Material "PreviewSurface_01"
+        {
+            token outputs:displacement.connect = </World/Looks/PreviewSurface_01/Shader.outputs:displacement>
+            token outputs:surface.connect = </World/Looks/PreviewSurface_01/Shader.outputs:surface>
+
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:clearcoatRoughness = 0.01 (
+                    customData = {
+                        float default = 0.01
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                color3f inputs:diffuseColor = (1, 0.41698837, 0) (
+                    customData = {
+                        float3 default = (0.18, 0.18, 0.18)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                float inputs:displacement = 0 (
+                    customData = {
+                        float default = 0
+                    }
+                    hidden = false
+                )
+                color3f inputs:emissiveColor = (0, 0, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                float inputs:ior = 1.5 (
+                    customData = {
+                        float default = 1.5
+                        dictionary range = {
+                            float max = 3.4028235e38
+                            float min = 0
+                        }
+                        dictionary soft_range = {
+                            float max = 5
+                            float min = 1
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:metallic = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                normal3f inputs:normal = (0, 0, 1) (
+                    customData = {
+                        float3 default = (0, 0, 1)
+                        dictionary range = {
+                            float3 max = (1, 1, 1)
+                            float3 min = (-1, -1, -1)
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:occlusion = 1 (
+                    customData = {
+                        float default = 1
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    doc = """This parameter is unused.
+"""
+                    hidden = false
+                )
+                float inputs:opacity = 1 (
+                    customData = {
+                        float default = 1
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:opacityThreshold = 0 (
+                    connectability = "interfaceOnly"
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:roughness = 0.5 (
+                    customData = {
+                        float default = 0.5
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                color3f inputs:specularColor = (0, 0, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                int inputs:useSpecularWorkflow = 0 (
+                    connectability = "interfaceOnly"
+                    customData = {
+                        int default = 0
+                        dictionary range = {
+                            int max = 1
+                            int min = 0
+                        }
+                        string widgetType = "checkBox"
+                    }
+                    hidden = false
+                )
+                token outputs:displacement (
+                    renderType = "material"
+                )
+                token outputs:surface (
+                    renderType = "material"
+                )
+            }
+        }
+
+        def Material "PreviewSurface_02"
+        {
+            token outputs:displacement.connect = </World/Looks/PreviewSurface_02/Shader.outputs:displacement>
+            token outputs:surface.connect = </World/Looks/PreviewSurface_02/Shader.outputs:surface>
+
+            def Shader "Shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:clearcoatRoughness = 0.01 (
+                    customData = {
+                        float default = 0.01
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                color3f inputs:diffuseColor = (0, 0.756757, 1) (
+                    customData = {
+                        float3 default = (0.18, 0.18, 0.18)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                float inputs:displacement = 0 (
+                    customData = {
+                        float default = 0
+                    }
+                    hidden = false
+                )
+                color3f inputs:emissiveColor = (0, 0, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                float inputs:ior = 1.5 (
+                    customData = {
+                        float default = 1.5
+                        dictionary range = {
+                            float max = 3.4028235e38
+                            float min = 0
+                        }
+                        dictionary soft_range = {
+                            float max = 5
+                            float min = 1
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:metallic = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                normal3f inputs:normal = (0, 0, 1) (
+                    customData = {
+                        float3 default = (0, 0, 1)
+                        dictionary range = {
+                            float3 max = (1, 1, 1)
+                            float3 min = (-1, -1, -1)
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:occlusion = 1 (
+                    customData = {
+                        float default = 1
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    doc = """This parameter is unused.
+"""
+                    hidden = false
+                )
+                float inputs:opacity = 1 (
+                    customData = {
+                        float default = 1
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:opacityThreshold = 0 (
+                    connectability = "interfaceOnly"
+                    customData = {
+                        float default = 0
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                float inputs:roughness = 0.5 (
+                    customData = {
+                        float default = 0.5
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    hidden = false
+                )
+                color3f inputs:specularColor = (0, 0, 0) (
+                    customData = {
+                        float3 default = (0, 0, 0)
+                    }
+                    hidden = false
+                    renderType = "color"
+                )
+                int inputs:useSpecularWorkflow = 0 (
+                    connectability = "interfaceOnly"
+                    customData = {
+                        int default = 0
+                        dictionary range = {
+                            int max = 1
+                            int min = 0
+                        }
+                        string widgetType = "checkBox"
+                    }
+                    hidden = false
+                )
+                token outputs:displacement (
+                    renderType = "material"
+                )
+                token outputs:surface (
+                    renderType = "material"
+                )
+            }
+        }
+    }
+
+    def Xform "animated"
+    {
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+        def Mesh "Cube"
+        {
+            float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 3, 2, 4, 6, 7, 5, 6, 2, 3, 7, 4, 5, 1, 0, 4, 0, 2, 6, 5, 7, 3, 1]
+            normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 0, -1), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, 1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (0, -1, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (-1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0), (1, 0, 0)] (
+                interpolation = "faceVarying"
+            )
+            point3f[] points = [(-50, -50, 50), (50, -50, 50), (-50, 50, 50), (50, 50, 50), (-50, -50, -50), (50, -50, -50), (-50, 50, -50), (50, 50, -50)]
+            texCoord2f[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0), (0, 1), (0, 0), (1, 0), (1, 1), (0, 0), (1, 0), (1, 1), (0, 1), (0, 0), (1, 0), (1, 1), (0, 1), (1, 0), (1, 1), (0, 1), (0, 0)] (
+                interpolation = "faceVarying"
+            )
+            uniform token subdivisionScheme = "none"
+            double3 xformOp:rotateXYZ = (0, 0, 0)
+            double3 xformOp:scale = (1, 2.1917704586799704, 5.0237375288365955)
+            double3 xformOp:translate = (0, 480.8462700947247, 136.18986567192349)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+        }
+    }
+
+    def OmniGraph "PushGraph"
+    {
+        token evaluationMode = "Automatic"
+        token evaluator:type = "push"
+        token fabricCacheBacking = "Shared"
+        int2 fileFormatVersion = (1, 9)
+        token pipelineStage = "pipelineStageSimulation"
+
+        def OmniGraphNode "CubeCurveNode"
+        {
+            custom string inputs:IndividualOutputs
+            custom rel inputs:Prim = </World/animated/Cube> (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "target"
+                        }
+                    }
+                }
+            )
+            custom timecode inputs:Time
+            custom bool inputs:UseGlobalTime
+            token node:type = "omni.anim.curve.core.AnimCurve"
+            int node:typeVersion = 5
+            custom rel outputs_AnimFrame (
+                customData = {
+                    dictionary omni = {
+                        dictionary graph = {
+                            string relType = "bundle"
+                        }
+                    }
+                }
+            )
+            uniform token xformOp:translate:x:defaultTangentType = "auto"
+            uniform int64[] xformOp:translate:x:inTangentTimes = [0, -47039999]
+            uniform token[] xformOp:translate:x:inTangentTypes = ["auto", "auto"]
+            uniform double[] xformOp:translate:x:inTangentValues = [0, 0]
+            uniform int64[] xformOp:translate:x:outTangentTimes = [47040000, 0]
+            uniform token[] xformOp:translate:x:outTangentTypes = ["auto", "auto"]
+            uniform double[] xformOp:translate:x:outTangentValues = [0, 0]
+            uniform token xformOp:translate:x:postInfinityType = "constant"
+            uniform token xformOp:translate:x:preInfinityType = "constant"
+            uniform bool[] xformOp:translate:x:tangentBrokens = [0, 0]
+            uniform bool[] xformOp:translate:x:tangentWeighteds = [0, 0]
+            uniform int64[] xformOp:translate:x:times = [0, 141120000]
+            uniform double[] xformOp:translate:x:values = [0, 0]
+            uniform token xformOp:translate:y:defaultTangentType = "auto"
+            uniform int64[] xformOp:translate:y:inTangentTimes = [0, -47039999]
+            uniform token[] xformOp:translate:y:inTangentTypes = ["auto", "auto"]
+            uniform double[] xformOp:translate:y:inTangentValues = [0, 0]
+            uniform int64[] xformOp:translate:y:outTangentTimes = [47040000, 0]
+            uniform token[] xformOp:translate:y:outTangentTypes = ["auto", "auto"]
+            uniform double[] xformOp:translate:y:outTangentValues = [0, 0]
+            uniform token xformOp:translate:y:postInfinityType = "constant"
+            uniform token xformOp:translate:y:preInfinityType = "constant"
+            uniform bool[] xformOp:translate:y:tangentBrokens = [0, 0]
+            uniform bool[] xformOp:translate:y:tangentWeighteds = [0, 0]
+            uniform int64[] xformOp:translate:y:times = [0, 141120000]
+            uniform double[] xformOp:translate:y:values = [480.8462700947247, -95.46474748646405]
+            uniform token xformOp:translate:z:defaultTangentType = "auto"
+            uniform int64[] xformOp:translate:z:inTangentTimes = [0, -47039999]
+            uniform token[] xformOp:translate:z:inTangentTypes = ["auto", "auto"]
+            uniform double[] xformOp:translate:z:inTangentValues = [0, 0]
+            uniform int64[] xformOp:translate:z:outTangentTimes = [47040000, 0]
+            uniform token[] xformOp:translate:z:outTangentTypes = ["auto", "auto"]
+            uniform double[] xformOp:translate:z:outTangentValues = [0, 0]
+            uniform token xformOp:translate:z:postInfinityType = "constant"
+            uniform token xformOp:translate:z:preInfinityType = "constant"
+            uniform bool[] xformOp:translate:z:tangentBrokens = [0, 0]
+            uniform bool[] xformOp:translate:z:tangentWeighteds = [0, 0]
+            uniform int64[] xformOp:translate:z:times = [0, 141120000]
+            uniform double[] xformOp:translate:z:values = [136.18986567192349, 136.18986567192349]
+
+            def Output "outputs_AnimFrame" (
+                active = false
+            )
+            {
+            }
+        }
+    }
+}
+
+def Xform "Environment"
+{
+    int ground:size = 1400
+    string ground:type = "On"
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+    def DomeLight "Sky" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:colorTemperature = 6250
+        bool inputs:enableColorTemperature = 1
+        float inputs:exposure = 9
+        float inputs:intensity = 1
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        token visibility = "inherited"
+        double3 xformOp:rotateXYZ = (0, -90, -90)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 305, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float inputs:angle = 2.5
+        float inputs:colorTemperature = 7250
+        bool inputs:enableColorTemperature = 1
+        float inputs:exposure = 10
+        float inputs:intensity = 1
+        float inputs:shaping:cone:angle = 180
+        float inputs:shaping:cone:softness
+        float inputs:shaping:focus
+        color3f inputs:shaping:focusTint
+        asset inputs:shaping:ies:file
+        token visibility = "inherited"
+        double3 xformOp:rotateXYZ = (-105, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 305, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Scope "Looks"
+    {
+        def Material "Grid"
+        {
+            token outputs:mdl:displacement.connect = </Environment/Looks/Grid/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </Environment/Looks/Grid/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </Environment/Looks/Grid/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                float inputs:albedo_add = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary soft_range = {
+                            float max = 1
+                            float min = -1
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Add"
+                    doc = """Adds a constant value to the diffuse color 
+
+"""
+                    hidden = false
+                )
+                float inputs:albedo_brightness = 0.52 (
+                    customData = {
+                        float default = 1
+                        dictionary soft_range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Brightness"
+                    doc = """Multiplier for the diffuse color 
+
+"""
+                    hidden = false
+                )
+                float inputs:albedo_desaturation = 1 (
+                    customData = {
+                        float default = 0
+                        dictionary soft_range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Desaturation"
+                    doc = """Desaturates the diffuse color
+
+"""
+                    hidden = false
+                )
+                bool inputs:project_uvw = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "UV"
+                    displayName = "Enable Project UVW Coordinates"
+                    doc = """When enabled, UV coordinates will be generated by projecting them from a coordinate system
+
+"""
+                    hidden = false
+                )
+                float inputs:reflection_roughness_constant = 0.333 (
+                    customData = {
+                        float default = 0.5
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Reflectivity"
+                    displayName = "Roughness Amount"
+                    doc = """Higher roughness values lead to more blurry reflections
+
+"""
+                    hidden = false
+                )
+                float inputs:texture_rotate = 0 (
+                    customData = {
+                        float default = 0
+                    }
+                    displayGroup = "UV"
+                    displayName = "Texture Rotate"
+                    doc = """Rotates angle of texture in degrees.
+
+"""
+                    hidden = false
+                )
+                float2 inputs:texture_scale = (0.5, 0.5) (
+                    customData = {
+                        float2 default = (1, 1)
+                    }
+                    displayGroup = "UV"
+                    displayName = "Texture Tiling"
+                    doc = """Controls the repetition of the texture.
+
+"""
+                    hidden = false
+                )
+                float2 inputs:texture_translate = (0, 0) (
+                    customData = {
+                        float2 default = (0, 0)
+                    }
+                    displayGroup = "UV"
+                    displayName = "Texture Translate"
+                    doc = """Controls position of texture.
+
+"""
+                    hidden = false
+                )
+                bool inputs:world_or_object = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "UV"
+                    displayName = "Enable World Space"
+                    doc = """When enabled, uses world space for projection, otherwise object space is used
+
+"""
+                    hidden = false
+                )
+                token outputs:out (
+                    renderType = "material"
+                )
+            }
+        }
+
+        def Material "Ground"
+        {
+            token outputs:mdl:displacement.connect = </Environment/Looks/Ground/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </Environment/Looks/Ground/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </Environment/Looks/Ground/Shader.outputs:out>
+        }
+    }
+
+    def Plane "groundCollider" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        uniform token axis = "Y"
+        uniform token purpose = "guide"
+    }
+}
+

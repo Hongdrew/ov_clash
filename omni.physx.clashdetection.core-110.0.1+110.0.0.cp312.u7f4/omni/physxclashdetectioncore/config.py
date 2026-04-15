@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: Copyright (c) 2023-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+#
+# NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+# property and proprietary rights in and to this material, related
+# documentation and any modifications thereto. Any use, reproduction,
+# disclosure or distribution of this material and related documentation
+# without an express license agreement from NVIDIA CORPORATION or
+# its affiliates is strictly prohibited.
+
+from typing import Optional
+
+
+class ExtensionConfig:
+    """A configuration class for managing extension settings.
+
+    This class is used to configure various settings for an extension, including
+    enabling or disabling debug logging and specifying the path to the extension.
+
+    Attributes:
+        debug_logging (bool): Indicates whether debugging messages should be printed.
+        debug_logging_detailed (bool): Indicates whether detailed debugging messages should be printed.
+        extension_path (Optional[str]): The file path to the extension, set at startup if available.
+        update_clash_states_after_detection (bool): Indicates whether to update clash states after running clash detection.
+    """
+
+    debug_logging: bool = False
+    debug_logging_detailed: bool = False
+    extension_path: Optional[str] = None
+    update_clash_states_after_detection: bool = True

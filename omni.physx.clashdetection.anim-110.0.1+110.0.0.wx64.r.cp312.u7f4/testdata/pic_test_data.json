@@ -1,0 +1,11 @@
+{
+	"pic":
+	[
+		{"username": "pparker", "first_name": "Peter", "last_name": "Parker", "email": "peter@spider-man.com"},
+		{"username": "only1stname", "first_name": "Tom", "last_name": "", "email": ""},
+		{"username": "onlyfullname", "first_name": "Tom", "last_name": "Jelly", "email": ""},
+		{"username": "onlyemail", "first_name": "", "last_name": "", "email": "tom@email.com"},
+		{"username": "empty", "first_name": "", "last_name": "", "email": ""},
+		{"username": "", "first_name": "<Empty>", "last_name": "", "email": ""}
+	]
+}

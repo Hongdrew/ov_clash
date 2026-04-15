@@ -1,0 +1,103 @@
+{
+    "additional_info": {
+        "Author": "Tomas Jelinek",
+        "Date": "2025-01-01",
+        "Engine": "NVIDIA Omniverse Clash Detection",
+        "Company": "NVIDIA",
+        "Company Website": "https://www.nvidia.com",
+        "Additional Info": "This is a test - this is a test - this is a test - this is a test - this is a test..."
+    },
+    "columns": [
+        "Clash ID",
+        "Min Distance",
+        "Max Local Depth",
+        "Tolerance",
+        "Overlap Tris",
+        "Clash Start",
+        "Clash End",
+        "Records",
+        "Object A",
+        "Object B",
+        "Comment"
+    ],
+    "rows": [
+        [
+            "0x25f2f5911be3e91fef42b2afd3180bc1",
+            "0.000",
+            "5.218",
+            "0.700",
+            "32",
+            "3.625",
+            "6.042",
+            "59",
+            "/Root/STATION_TIME_SAMPLED/STATION/SKID/lnk/geometry/Mesh11/NV_Mesh11",
+            "/Root/Xform_Primitives/Cube",
+            "My custom comment #1"
+        ],
+        [
+            "0x5d8c8297e92d15be6ca04d7842fd78cd",
+            "0.000",
+            "1.146",
+            "0.700",
+            "191",
+            "4.958",
+            "5.083",
+            "4",
+            "/Root/STATION_TIME_SAMPLED/STATION/SKID/lnk/Mesh3/NV_Mesh3",
+            "/Root/Xform_Primitives/Cube",
+            "My custom comment #2"
+        ],
+        [
+            "0x69e4fae9370fa52b7ea3db54ad637eca",
+            "0.000",
+            "0.643",
+            "0.700",
+            "252",
+            "4.958",
+            "5.083",
+            "4",
+            "/Root/STATION_TIME_SAMPLED/STATION/SKID/lnk/geometry/Mesh12/NV_Mesh12",
+            "/Root/Xform_Primitives/Cube",
+            "My custom comment #3"
+        ],
+        [
+            "0x7689304c8a4904a09ead603b938dd79f",
+            "0.000",
+            "1.146",
+            "0.700",
+            "204",
+            "4.958",
+            "5.083",
+            "4",
+            "/Root/STATION_TIME_SAMPLED/STATION/SKID/lnk/Mesh2/NV_Mesh2",
+            "/Root/Xform_Primitives/Cube",
+            "My custom comment #4"
+        ],
+        [
+            "0xa872e774aa37600c3cf14ddc3ae7d4ae",
+            "0.000",
+            "1.222",
+            "0.700",
+            "15",
+            "5.667",
+            "5.875",
+            "6",
+            "/Root/STATION_TIME_SAMPLED/STATION/SKID/lnk/Mesh4/NV_Mesh4",
+            "/Root/Xform_Primitives/Cube",
+            "My custom comment #5"
+        ],
+        [
+            "0xbf454dfc1d8736ec3b36be0e4141862",
+            "0.000",
+            "1.222",
+            "0.700",
+            "18",
+            "5.667",
+            "5.875",
+            "6",
+            "/Root/STATION_TIME_SAMPLED/STATION/SKID/lnk/Mesh5/NV_Mesh5",
+            "/Root/Xform_Primitives/Cube",
+            "My custom comment #6"
+        ]
+    ]
+}
